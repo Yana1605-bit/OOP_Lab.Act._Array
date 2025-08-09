@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._14
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int students = 5;
+            int subjects = 3;
+            int[] grades = new int[students * subjects];
+            int[] total_scores = new int[students];
+            
+            // Input students' grade
+            for (int i = 0; i < students; i++)
+            {
+                Console.WriteLine($"Enter grades for Student {i + 1}:");
+                for (int j = 0; j < subjects; j++)
+                {
+                    int grade;
+                    do
+                    {
+                        //Input subject name
+                        Console.Write($"Subject {j + 1} (0-100): ");
+                        grade = int.Parse(Console.ReadLine());
+                    } 
+                    while (grade < 0 || grade > 100);
+                    grades[i * subjects + j] = grade; 
+                    total_scores[i] += grade; 
+                }
+            }
+            int[] ranks = new int[students];
+            
+            for (int i = 0; i < students; i++)
+            {
+                ranks[i] = i;
+            }
+
+            //For ranking
+            for (int i = 0;i < students; i++)
+            for (int j = 0; j < students - i - 1; j++)
+            {
+                if (total_scores[ranks[j]] < total_scores[ranks[j + 1]])
+                {
+                    int rank = ranks[j];
+                    ranks[j] = ranks[j + 1];
+                    ranks[j + 1] = rank;
+                }
+            }
+
+            Console.WriteLine("\n    Student Total Scores and Ranks:");
+            for (int i = 0; i < students; i++)
+            {
+                int student_num = ranks[i];
+                Console.WriteLine("Students no.     Total score     Rank");
+                Console.WriteLine($"    {student_num + 1}                {total_scores[student_num]}            {i + 1}");
+            }
+        }
+    }
+}
