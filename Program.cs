@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] ages = new int[5];
+
+            int min = int.MinValue;
+            int max = int.MaxValue;
+
+            int below12 = 0;
+            int teenager = 0;
+            int ages_20to60 = 0;
+            int ages_above60 = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Enter age {i + 1}: ");
+                ages[i] = int.Parse(Console.ReadLine());
+
+                if (ages[i] < min) min = ages[i];
+                if (ages[i] > max) max = ages[i];
+
+                if (ages[i] <= 9)
+                    Console.Write("Invalid.\n");
+                else if (ages[i] < 13)
+                    below12++;
+                else if (ages[i] <= 19)
+                    teenager++;
+                else if (ages[i] <= 60)
+                    ages_20to60++;
+                else if (ages[i] >= 61 && ages[i] <= 99)
+                    ages_above60++;
+                else
+                    Console.Write("Invalid.\n");
+            }
+
+            Console.WriteLine($"\nThe total number of teenager: {teenager}");
+        }
+    }
+}
