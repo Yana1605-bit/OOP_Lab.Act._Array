@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._10
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] height = new int[6];
+            int Short = 0;
+            int Average = 0;
+            int Tall = 0;
+
+            for (int i = 0; i < height.Length; i++)
+            {
+                Console.Write($"Enter 6 height in cm {i + 1}: ");
+                height[i] = int.Parse(Console.ReadLine());
+
+                if (height[i] < 150)
+                {
+                    Console.WriteLine("Short");
+                    Short++;
+                }
+                else if (height[i] > 150 && height[i] < 170)
+                {
+                    Console.WriteLine("Average");
+                    Average++;
+                }
+                else
+                {
+                    Console.WriteLine("Tall");
+                    Tall++;
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine($"Total number if short height: {Short}");
+            Console.WriteLine($"Total number if average height: {Average}");
+            Console.WriteLine($"Total number if tall height: {Tall}");
+        }
+    }
+}
