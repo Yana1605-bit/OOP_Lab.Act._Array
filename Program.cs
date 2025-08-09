@@ -4,39 +4,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Act._06
+namespace Act._07
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] celsius = new int[5];
+            string[] votes = new string[10];
+            int Mae = 0;
+            int Angela = 0;
+            int Ashly = 0;
 
-            for (int i = 0; i < celsius.Length; i++)
+            Console.WriteLine("Choose your candidate (Mae / Angela / Ashly)");
+
+            for (int i = 0; i < votes.Length; i++)
             {
-                Console.Write($"Enter temperature in Celsius {i + 1}: ");
-                celsius[i] = int.Parse(Console.ReadLine());
-
-                float fahrenheit = (celsius[i] * 9 / 5) + 32;
-                Console.WriteLine($"Temperature in Fahrenheit: {fahrenheit}");
-                Console.WriteLine("\n");
+                Console.Write($"Enter vote {i + 1}: ");
+                votes[i] = Console.ReadLine().ToLower();
             }
 
-            foreach (int temp in celsius)
+            for (int i = 0; i < votes.Length; i++)
             {
-                if (temp < 15)
+                if (votes[i] == "mae")
                 {
-                    Console.WriteLine("\nCold");
+                    Mae++;
                 }
-                else if (temp < 15 && temp > 30)
+                else if (votes[i] == "angela")
                 {
-                    Console.WriteLine("\nWarm");
+                    Angela++;
+                }
+                else if (votes[i] == "ashly")
+                {
+                    Ashly++;
                 }
                 else
                 {
-                    Console.WriteLine("\nHot");
+                    Console.WriteLine("Invalid vote.");
                 }
             }
+            Console.WriteLine();
+            Console.WriteLine($"Total votes for Mae: {Mae} votes");
+            Console.WriteLine($"Total votes for Angela: {Angela} votes");
+            Console.WriteLine($"Total votes for Ashly: {Ashly} votes");
+
+            int[] voteC = { Mae, Angela, Ashly };
+            string[] candidates = { "Mae", "Angela", "Ashly" };
+
+            int maxV = voteC[0];
+            int winner = 0;
+
+            for (int i = 1; i < voteC.Length; i++)
+            {
+                if (voteC[i] > maxV)
+                {
+                    maxV = voteC[i];
+                    winner = i;
+                }
+            }
+
+            Console.WriteLine($"\nWinner: {candidates[winner]}!!!");
         }
     }
 }
