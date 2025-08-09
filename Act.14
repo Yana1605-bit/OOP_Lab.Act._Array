@@ -15,7 +15,6 @@ namespace Act._14
             int[] grades = new int[students * subjects];
             int[] total_scores = new int[students];
             
-            // Input students' grade
             for (int i = 0; i < students; i++)
             {
                 Console.WriteLine($"Enter grades for Student {i + 1}:");
@@ -24,7 +23,6 @@ namespace Act._14
                     int grade;
                     do
                     {
-                        //Input subject name
                         Console.Write($"Subject {j + 1} (0-100): ");
                         grade = int.Parse(Console.ReadLine());
                     } 
@@ -40,7 +38,6 @@ namespace Act._14
                 ranks[i] = i;
             }
 
-            //For ranking
             for (int i = 0;i < students; i++)
             for (int j = 0; j < students - i - 1; j++)
             {
