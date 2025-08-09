@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._20
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] words = new string[5];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                Console.Write($"Enter word {i + 1}: ");
+                words[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                string orig = words[i];
+                string rev = "";
+
+                for (int j = orig.Length - 1; j >= 0; j--)
+                {
+                    rev += orig[j];
+                }
+
+                if (orig == rev)
+                {
+                    Console.WriteLine($"Word: {i + 1} '{orig}' is a Palindrome");
+                }
+                else
+                {
+                    Console.WriteLine($"Word: {i + 1} '{orig}' is not a Palindrome");
+                }
+            }
+        }
+    }
+}
