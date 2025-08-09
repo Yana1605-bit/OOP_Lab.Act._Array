@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._17
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[8];
+
+            for (int i = 0; i < 8; i++)
+            {
+                Console.Write($"Enter 8 whole numbers {i + 1}: ");
+                numbers[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine();
+
+            for (int i = 0; i < 8; i++)
+            {
+                int num = numbers[i];
+                string binary = Convert.ToString(num);
+                string EvenOdd = "Odd";
+                
+                if (num % 2 == 0)
+                    EvenOdd = "Even";
+                
+                string PrimeStatus = "No";
+
+                if (IsPrime(num))
+                    PrimeStatus = "Yes";
+
+                Console.WriteLine($"Number {i + 1}: " + num);
+                Console.WriteLine($"Prime {i + 1}: " + PrimeStatus);
+                Console.WriteLine($"Binary {i + 1}: " + binary);
+                Console.WriteLine($"Even or Odd {i + 1}: " + EvenOdd);
+                Console.WriteLine();
+
+            }
+            bool IsPrime(int numb)
+            {
+                if (numb <= 1) return false;
+                for (int i = 2; i <= numb / 2; i++)
+                {
+                    if (numb % i == 0) return false;
+                }
+                return true;
+            }
+        }
+    }
+}
