@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._12
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] months = new string[] {"January", "February", "March", "April", "May", "June", "July", "August",
+        "September", "October", "November", "December"};
+
+            float[] monthly_sales = new float[12];
+
+            for (int i = 0; i < monthly_sales.Length; i++)
+            {
+                Console.Write($"Enter sales for month {months[i]}: ");
+                monthly_sales[i] = float.Parse(Console.ReadLine());
+            }
+
+            float highest = monthly_sales[0];
+            float lowest = monthly_sales[0];
+            int highestS = 0;
+            int lowestS = 0;
+            float sum = 0;
+
+            for (int i = 0; i < 12; i++)
+            {
+                sum += monthly_sales[i];
+
+                if (monthly_sales[i] > highest)
+                {
+                    highest = monthly_sales[i];
+                    highestS = i;
+                }
+
+                if (monthly_sales[i] < lowest)
+                {
+                    lowest = monthly_sales[i];
+                    highestS = i;
+                }
+            }
+
+            float average = sum / 12;
+
+            Console.WriteLine();
+            Console.WriteLine($"The highest sale in 12 months is {months[highestS]}, with {highest} sales.");
+            Console.WriteLine($"The lowest sale in 12 months is {months[lowestS]}, with {lowest} sales.");
+            Console.WriteLine($"Average sales: {average}");
+        }
+    }
+}
