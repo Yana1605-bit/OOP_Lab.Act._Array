@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._15
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int users = 20;
+            int[] lucky_num = new int[users];
+            int[] winning_num = { 5, 8, 16, 55, 87 };
+
+            for (int i = 0; i < users; i++)
+            {
+                int num;
+
+                while (true)
+                {
+                    Console.Write($"Enter your lucky number (1-99) {i + 1}: ");
+                    string input = Console.ReadLine();
+
+                    int numb;
+                    if (int.TryParse(input, out num) && num >= 1 && num <= 99)
+                    {
+                        lucky_num[i] = num;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid. Please enter a number between 1 and 99.");
+                    }
+                }
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Lucky Winners:");
+
+            for (int i = 0; i < users; i++)
+            {
+                int user_numb = lucky_num[i];
+
+                if (Array.Exists(winning_num, win => win == user_numb))
+                {
+                    Console.WriteLine($"Congratulations, user no.{i + 1}! You picked the number {user_numb}, and you WIN!");
+                }
+            }
+        }
+    }
+}
