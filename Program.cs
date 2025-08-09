@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numb = new int[10];
+            int DivBy5 = 0;
+            int even = 0;
+            int odd = 0;
+
+            for (int i = 0; i < numb.Length; i++)
+            {
+                Console.Write($"Enter a number {i + 1}: ");
+                numb[i] = int.Parse(Console.ReadLine());
+
+                if (numb[i] % 2 == 0)
+                    even++;
+                else if (numb[i] % 5 == 0)
+                    DivBy5++;
+                else
+                    odd++;
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine($"Total number of Even: {even}");
+            Console.WriteLine($"Total number of Odd: {odd}");
+            Console.WriteLine($"Total number of Divisible by 5: {DivBy5}");
+        }
+    }
+}
