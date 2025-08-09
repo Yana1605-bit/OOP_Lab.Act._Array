@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._19
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] categories = { "Food", "Rent", "Utilities", "Transport", "Others" };
+            double[] expenses = new double[5];
+            double monthly_income = 30000;
+            double total = 0;
+
+
+            Console.WriteLine("Enter your budget expenses each categories (food, rent, utilities, transport, others)");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"{categories[i]}: ");
+                expenses[i] = Convert.ToDouble(Console.ReadLine());
+                total += expenses[i];
+            }
+
+            Console.WriteLine($"\nTotal Budget: {total}");
+
+
+            if (total > monthly_income)
+            {
+                Console.WriteLine($"Your budget exceeds your monthly income({monthly_income})!");
+
+                int max = 0;
+                for (int i = 1; i < 5; i++)
+                {
+                    if (expenses[i] > expenses[max])
+                    {
+                        max = i;
+                    }
+                }
+            }
+        }
+    }
+}
