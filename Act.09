@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Act._09
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float[] num = new float[3];
+
+            for (int i = 0; i < num.Length; i++)
+            {
+                Console.Write($"Enter a number {i + 1}: ");
+                num[i] = float.Parse(Console.ReadLine());
+            }
+
+            foreach (float numb in num)
+            {
+                Console.WriteLine($"Multiplication table: {numb}:");
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    Console.WriteLine($"{numb} x {i} = {numb * i}");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
