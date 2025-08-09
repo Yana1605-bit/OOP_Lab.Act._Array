@@ -4,65 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Act._07
+namespace Act._08
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string[] votes = new string[10];
-            int Mae = 0;
-            int Angela = 0;
-            int Ashly = 0;
+            string[] pass = new string[4];
 
-            Console.WriteLine("Choose your candidate (Mae / Angela / Ashly)");
-
-            for (int i = 0; i < votes.Length; i++)
+            for (int i = 0; i < pass.Length; i++)
             {
-                Console.Write($"Enter vote {i + 1}: ");
-                votes[i] = Console.ReadLine().ToLower();
-            }
+                Console.Write($"Enter password {i + 1}: ");
+                pass[i] = Console.ReadLine();
 
-            for (int i = 0; i < votes.Length; i++)
-            {
-                if (votes[i] == "mae")
+                int upCount = 0;
+
+                foreach (char c in pass[i])
                 {
-                    Mae++;
+                    if (char.IsUpper(c))
+                    {
+                        upCount++;
+                        break;
+                    }
                 }
-                else if (votes[i] == "angela")
+
+                if (pass[i].Length >= 6 && upCount > 0)
                 {
-                    Angela++;
-                }
-                else if (votes[i] == "ashly")
-                {
-                    Ashly++;
+                    Console.WriteLine("Valid");
                 }
                 else
                 {
-                    Console.WriteLine("Invalid vote.");
+                    Console.WriteLine("Invalid password.");
+                    if (pass[i].Length < 6)
+                        Console.WriteLine("Password must be at least 6 characters long.");
+                    if (upCount == 0)
+                        Console.WriteLine("Password must contain at least one uppercase letter.");
+                    Console.WriteLine();
                 }
             }
-            Console.WriteLine();
-            Console.WriteLine($"Total votes for Mae: {Mae} votes");
-            Console.WriteLine($"Total votes for Angela: {Angela} votes");
-            Console.WriteLine($"Total votes for Ashly: {Ashly} votes");
-
-            int[] voteC = { Mae, Angela, Ashly };
-            string[] candidates = { "Mae", "Angela", "Ashly" };
-
-            int maxV = voteC[0];
-            int winner = 0;
-
-            for (int i = 1; i < voteC.Length; i++)
-            {
-                if (voteC[i] > maxV)
-                {
-                    maxV = voteC[i];
-                    winner = i;
-                }
-            }
-
-            Console.WriteLine($"\nWinner: {candidates[winner]}!!!");
         }
     }
 }
