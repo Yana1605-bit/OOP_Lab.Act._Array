@@ -1,42 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Act._06
+namespace Act._03
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] celsius = new int[5];
+            int[] scores = new int[5];
 
-            for (int i = 0; i < celsius.Length; i++)
+            for (int i = 0; i < scores.Length; i++)
             {
-                Console.Write($"Enter temperature in Celsius {i + 1}: ");
-                celsius[i] = int.Parse(Console.ReadLine());
+                Console.Write($"Enter 5 percentage scores {i + 1}: ");
+                scores[i] = int.Parse(Console.ReadLine());
 
-                float fahrenheit = (celsius[i] * 9 / 5) + 32;
-                Console.WriteLine($"Temperature in Fahrenheit: {fahrenheit}");
-                Console.WriteLine("\n");
-            }
+                char letter_grade;
 
-            foreach (int temp in celsius)
-            {
-                if (temp < 15)
+                if (scores[i] >= 90 && scores[i] <= 100)
                 {
-                    Console.WriteLine("\nCold");
+                    letter_grade = 'A';
                 }
-                else if (temp < 15 && temp > 30)
+                else if (scores[i] >= 80 && scores[i] <= 89)
                 {
-                    Console.WriteLine("\nWarm");
+                    letter_grade = 'B';
+                }
+                else if (scores[i] >= 70 && scores[i] <= 79)
+                {
+                    letter_grade = 'C';
+                }
+                else if (scores[i] >= 60 && scores[i] <= 69)
+                {
+                    letter_grade = 'D';
                 }
                 else
                 {
-                    Console.WriteLine("\nHot");
+                    letter_grade = 'F';
                 }
-            }
+
+                switch (letter_grade)
+                {
+                    case 'A':
+                        Console.WriteLine("Your grade is: A");
+                        break;
+                    case 'B':
+                        Console.WriteLine("Your grade is: B");
+                        break;
+                    case 'C':
+                        Console.WriteLine("Your grade is: C");
+                        break;
+                    case 'D':
+                        Console.WriteLine("Your grade is: D");
+                        break;
+                    case 'F':
+                        Console.WriteLine("Your grade is: F");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid. Please enter score.");
+                        break;
+                }
+                Console.WriteLine();
+            }  
         }
     }
 }
